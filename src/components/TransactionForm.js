@@ -51,9 +51,7 @@ export default function Transactionform(addTransaction) {
   }
 
   return (
-    <Container>
-      <h3>Adicionar transação</h3>
-      <br />
+    <Container style={styles.container}>
       <Form>
         <Row style={styles.row}>
           <Col sm='6'>
@@ -101,7 +99,7 @@ export default function Transactionform(addTransaction) {
               <option value='11'>Dezembro</option>
             </Input>
           </Col>
-          <Col sm='2'>
+          <Col sm='3'>
             <Label>Dia</Label>
             <Input
               type='number'
@@ -148,7 +146,10 @@ export default function Transactionform(addTransaction) {
 }
 
 const styles = {
-  container: {},
+  container: {
+      paddingTop: 20,
+      paddingBottom: 20,
+  },
   check: {
     marginTop: 'auto',
     marginBottom: 'auto',
@@ -158,13 +159,13 @@ const styles = {
     backgroundColor: '#1CE65B',
     borderRadius: 5,
     width: 90,
-    paddingLeft: 15,
+    paddingLeft: 25,
   },
   debit: {
     backgroundColor: '#FF3B38',
     borderRadius: 5,
     width: 90,
-    paddingLeft: 15,
+    paddingLeft: 25,
   },
   row: {
     alignItems: 'center',

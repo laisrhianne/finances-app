@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import TransactionForm from './components/TransactionForm';
 import TransactionLog from './components/TransactionLog';
 
@@ -8,7 +8,13 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   function addTransaction(transaction){
-    setTransactions(transaction);
+    setTransactions(transaction, ...transactions);
+  }
+
+  const [modal, setModal] = useState(false);
+
+  function toggleModal() {
+    setModal(!modal);
   }
 
   return (
@@ -28,8 +34,14 @@ function App() {
             <br />
           </Col>
           <Col sm='6' style={styles.main}>
-            <TransactionForm addTransaction={addTransaction} />
             <TransactionLog transactions={transactions} />
+            <Button color='primary' onClick={toggleModal}>Adicionar Transação</Button>
+            <Modal isOpen={modal} toggle={toggleModal}>
+              <ModalHeader toggle={toggleModal}>Adicionar Transação</ModalHeader>
+              <ModalBody>
+                <TransactionForm addTransaction={addTransaction} />
+              </ModalBody>
+            </Modal>
           </Col>
         </Row>
       </Container>
