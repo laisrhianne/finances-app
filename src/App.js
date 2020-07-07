@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Container, Col, Row } from 'reactstrap';
+import TransactionForm from './components/TransactionForm';
+import TransactionLog from './components/TransactionLog';
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
+
+  function addTransaction(transaction){
+    setTransactions(transaction);
+  }
+
   return (
     <div className='App'>
       <Container
@@ -20,11 +28,8 @@ function App() {
             <br />
           </Col>
           <Col sm='6' style={styles.main}>
-            Finanças
-            <br />
-            Adicionar crédito/débito
-            <br />
-            Histórico
+            <TransactionForm addTransaction={addTransaction} />
+            <TransactionLog transactions={transactions} />
           </Col>
         </Row>
       </Container>
