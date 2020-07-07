@@ -20,10 +20,34 @@ export default function Transactionform(addTransaction) {
     day: date.getDate(),
   });
 
-  function handleDay(event){
-      setTransaction({
-          day: event.target.value
-      });
+  function handleDay(event) {
+    setTransaction({
+      day: event.target.value,
+    });
+  }
+
+  function handleMonth(event) {
+    setTransaction({
+      month: event.target.value,
+    });
+  }
+
+  function handleCredit(event) {
+    setTransaction({
+      credit: event.target.value,
+    });
+  }
+
+  function handleDescription(event) {
+    setTransaction({
+      description: event.target.value,
+    });
+  }
+
+  function handleValue(event) {
+    setTransaction({
+      value: event.target.value,
+    });
   }
 
   return (
@@ -35,20 +59,34 @@ export default function Transactionform(addTransaction) {
           <Col sm='6'>
             <FormGroup>
               <Label for='description'>Descrição</Label>
-              <Input type='text' name='description' id='description' />
+              <Input
+                type='text'
+                name='description'
+                id='description'
+                onChange={handleDescription}
+              />
             </FormGroup>
           </Col>
           <Col sm='3'>
             <FormGroup>
               <Label for='value'>Valor</Label>
-              <Input type='number' name='value' id='value' />
+              <Input
+                type='number'
+                name='value'
+                id='value'
+                onChange={handleValue}
+              />
             </FormGroup>
           </Col>
         </Row>
         <Row style={styles.row}>
           <Col sm='3'>
             <Label>Mês</Label>
-            <Input type='select'>
+            <Input
+              type='select'
+              value={transaction.month}
+              onChange={handleMonth}
+            >
               <option value='0'>Janeiro</option>
               <option value='1'>Fevereiro</option>
               <option value='2'>Março</option>
@@ -65,28 +103,42 @@ export default function Transactionform(addTransaction) {
           </Col>
           <Col sm='2'>
             <Label>Dia</Label>
-            <Input 
-            type='number' 
-            min='1' 
-            max='31' 
-            value={transaction.day}
-            onChange={handleDay}
-             />
+            <Input
+              type='number'
+              min='1'
+              max='31'
+              value={transaction.day}
+              onChange={handleDay}
+            />
           </Col>
           <Col sm='3' style={styles.check}>
-            <Label style={styles.credit}>
-              <Input type='radio' name='credit' value='true' />
-              Crédito
-            </Label>
-            <br />
-            <Label style={styles.debit}>
-              <Input type='radio' name='credit' value='false' />
-              Débito
-            </Label>
+            <FormGroup check>
+              <Label style={styles.credit}>
+                <Input
+                  type='radio'
+                  name='credit'
+                  value='true'
+                  onChange={handleCredit}
+                />
+                Crédito
+              </Label>
+              <br />
+              <Label style={styles.debit}>
+                <Input
+                  type='radio'
+                  name='credit'
+                  value='false'
+                  onChange={handleCredit}
+                />
+                Débito
+              </Label>
+            </FormGroup>
           </Col>
         </Row>
         <Row style={styles.row}>
-          <Button color='primary' style={styles.button}>
+          <Button color='primary' style={styles.button} onClick={()=> {
+              addTransaction(transaction);
+          }}>
             Adicionar
           </Button>
         </Row>
