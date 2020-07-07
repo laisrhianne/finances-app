@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Table } from 'reactstrap';
 
-export default function TransactionLog(transactions) {
+export default function TransactionLog({ transactions }) {
   let listOfTransactions = [];
   if (transactions.length > 10) {
     listOfTransactions = transactions.slice(0, 9);

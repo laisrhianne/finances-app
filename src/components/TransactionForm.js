@@ -10,7 +10,7 @@ import {
   FormGroup,
 } from 'reactstrap';
 
-export default function Transactionform(addTransaction) {
+export default function Transactionform({ addTransaction }) {
   const date = new Date();
   const [transaction, setTransaction] = useState({
     description: '',

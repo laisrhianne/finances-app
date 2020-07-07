@@ -8,7 +8,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   function addTransaction(transaction){
-    setTransactions(transaction, ...transactions);
+    setTransactions(transaction);
   }
 
   const [modal, setModal] = useState(false);
