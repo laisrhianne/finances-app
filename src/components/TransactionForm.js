@@ -10,7 +10,7 @@ import {
   FormGroup,
 } from 'reactstrap';
 
-export default function Transactionform({ addTransaction }) {
+export default function Transactionform({ addTransaction, toggleModal }) {
   const date = new Date();
   const [transaction, setTransaction] = useState({
     description: '',
@@ -50,9 +50,15 @@ export default function Transactionform({ addTransaction }) {
     });
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    addTransaction({...transaction});
+    toggleModal();
+  }
+
   return (
     <Container style={styles.container}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Row style={styles.row}>
           <Col sm='6'>
             <FormGroup>
@@ -117,6 +123,7 @@ export default function Transactionform({ addTransaction }) {
                   name='credit'
                   value='true'
                   onChange={handleCredit}
+                  checked='true'
                 />
                 Crédito
               </Label>
@@ -134,9 +141,7 @@ export default function Transactionform({ addTransaction }) {
           </Col>
         </Row>
         <Row style={styles.row}>
-          <Button color='primary' style={styles.button} onClick={()=> {
-              addTransaction(transaction);
-          }}>
+          <Button color='primary' style={styles.button} type='submit'>
             Adicionar
           </Button>
         </Row>

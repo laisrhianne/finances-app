@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Table } from 'reactstrap';
+import TableItem from './TableItem';
 
 export default function TransactionLog({ transactions }) {
   let listOfTransactions = [];
@@ -9,28 +10,9 @@ export default function TransactionLog({ transactions }) {
     listOfTransactions = transactions;
   }
 
-  function renderTable() {
-    if (listOfTransactions) {
-      return listOfTransactions.map((transaction) => {
-        return (
-          <tr
-            style={{
-              backgroundColor: transaction.credit ? '#1CE65B' : '#FF3B38',
-            }}
-          >
-            <td>{transaction.day}</td>
-            <td>{transaction.month}</td>
-            <td>{transaction.description}</td>
-            <td>{transaction.value}</td>
-          </tr>
-        );
-      });
-    }
-  }
-
   return (
     <Container style={styles.container}>
-      <h3>Log de transações</h3>
+      <h3>Histórico de transações</h3>
       <Table>
         <thead>
           <tr>
@@ -40,7 +22,13 @@ export default function TransactionLog({ transactions }) {
             <th>Valor</th>
           </tr>
         </thead>
-        <tbody>{renderTable}</tbody>
+        <tbody>
+          {listOfTransactions.map(transaction => {
+            return (
+              <TableItem transaction={transaction}  />
+            )
+          })}
+        </tbody>
       </Table>
     </Container>
   );
@@ -49,5 +37,6 @@ export default function TransactionLog({ transactions }) {
 const styles = {
   container: {
     marginTop: 30,
+    marginBottom: 30,
   },
 };

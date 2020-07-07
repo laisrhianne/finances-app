@@ -8,7 +8,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   function addTransaction(transaction){
-    setTransactions(transaction);
+    setTransactions([transaction, ...transactions]);
   }
 
   const [modal, setModal] = useState(false);
@@ -39,7 +39,7 @@ function App() {
             <Modal isOpen={modal} toggle={toggleModal}>
               <ModalHeader toggle={toggleModal}>Adicionar Transação</ModalHeader>
               <ModalBody>
-                <TransactionForm addTransaction={addTransaction} />
+                <TransactionForm addTransaction={addTransaction} toggleModal={toggleModal} />
               </ModalBody>
             </Modal>
           </Col>
