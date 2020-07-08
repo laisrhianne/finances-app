@@ -22,38 +22,49 @@ export default function Transactionform({ addTransaction, toggleModal }) {
 
   function handleDay(event) {
     setTransaction({
+      ...transaction,
       day: event.target.value,
     });
+    console.log(transaction);
   }
 
   function handleMonth(event) {
     setTransaction({
+      ...transaction,
       month: event.target.value,
     });
+    console.log(transaction);
   }
 
   function handleCredit(event) {
     setTransaction({
+      ...transaction,
       credit: event.target.value,
     });
+    console.log(transaction);
   }
 
   function handleDescription(event) {
     setTransaction({
+      ...transaction,
       description: event.target.value,
     });
+    console.log(transaction);
   }
 
   function handleValue(event) {
     setTransaction({
+      ...transaction,
       value: event.target.value,
     });
+    console.log(transaction);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     addTransaction({...transaction});
     toggleModal();
+    console.log(transaction);
   }
 
   return (
