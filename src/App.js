@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import {
+  Container,
+  Col,
+  Row,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from 'reactstrap';
 import TransactionForm from './components/TransactionForm';
 import TransactionLog from './components/TransactionLog';
 import Monitoring from './components/Monitoring';
@@ -8,7 +16,7 @@ import Monitoring from './components/Monitoring';
 function App() {
   const [transactions, setTransactions] = useState([]);
 
-  function addTransaction(transaction){
+  function addTransaction(transaction) {
     setTransactions([transaction, ...transactions]);
   }
 
@@ -31,11 +39,18 @@ function App() {
           </Col>
           <Col sm='6' style={styles.main}>
             <TransactionLog transactions={transactions} />
-            <Button color='primary' onClick={toggleModal}>Adicionar Transação</Button>
+            <Button color='primary' onClick={toggleModal}>
+              Adicionar Transação
+            </Button>
             <Modal isOpen={modal} toggle={toggleModal}>
-              <ModalHeader toggle={toggleModal}>Adicionar Transação</ModalHeader>
+              <ModalHeader toggle={toggleModal}>
+                Adicionar Transação
+              </ModalHeader>
               <ModalBody>
-                <TransactionForm addTransaction={addTransaction} toggleModal={toggleModal} />
+                <TransactionForm
+                  addTransaction={addTransaction}
+                  toggleModal={toggleModal}
+                />
               </ModalBody>
             </Modal>
           </Col>
@@ -48,15 +63,13 @@ function App() {
 const styles = {
   container: {
     backgroundColor: '#282c34',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 657,
+    height: '100vh',
   },
   monitoramento: {
     backgroundColor: '#6DC5C7',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 30,
+    marginRight: 'auto',
     marginLeft: 'auto',
     marginTop: 50,
     marginBottom: 50,
@@ -67,7 +80,7 @@ const styles = {
   main: {
     backgroundColor: '#C78F6D',
     marginRight: 'auto',
-    marginLeft: 30,
+    marginLeft: 'auto',
     marginTop: 50,
     marginBottom: 50,
     paddingTop: 20,
