@@ -37,9 +37,13 @@ export default function Transactionform({ addTransaction, toggleModal }) {
   }
 
   function handleCredit(event) {
+    let credit = true;
+    if (event.target.value === 'false') {
+      credit = false;
+    }
     setTransaction({
       ...transaction,
-      credit: event.target.value,
+      credit,
     });
     console.log(transaction);
   }
@@ -53,9 +57,10 @@ export default function Transactionform({ addTransaction, toggleModal }) {
   }
 
   function handleValue(event) {
+    const value = Number(event.target.value);
     setTransaction({
       ...transaction,
-      value: event.target.value,
+      value,
     });
     console.log(transaction);
   }
@@ -79,6 +84,7 @@ export default function Transactionform({ addTransaction, toggleModal }) {
                 name='description'
                 id='description'
                 onChange={handleDescription}
+                required='true'
               />
             </FormGroup>
           </Col>
@@ -90,6 +96,7 @@ export default function Transactionform({ addTransaction, toggleModal }) {
                 name='value'
                 id='value'
                 onChange={handleValue}
+                required='true'
               />
             </FormGroup>
           </Col>

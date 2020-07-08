@@ -3,6 +3,7 @@ import './App.css';
 import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import TransactionForm from './components/TransactionForm';
 import TransactionLog from './components/TransactionLog';
+import Monitoring from './components/Monitoring';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -26,12 +27,7 @@ function App() {
       >
         <Row>
           <Col sm='3' style={styles.monitoramento}>
-            Monitoramento
-            <br />
-            Montante atual
-            <br />
-            Gastos no mês
-            <br />
+            <Monitoring transactions={transactions} />
           </Col>
           <Col sm='6' style={styles.main}>
             <TransactionLog transactions={transactions} />

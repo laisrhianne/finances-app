@@ -1,15 +1,12 @@
 import React from 'react';
 
 export default function TableItem({ transaction }){
-  let credit = true;
-  if (transaction.credit === 'false') credit = false;
-
   let mes = nomearMes(transaction);
 
     return (
         <tr
             style={{
-              backgroundColor: credit ? '#1CE65B' : '#FF3B38',
+              backgroundColor: transaction.credit ? '#1CE65B' : '#FF3B38',
               height: 20,
             }}
           >
