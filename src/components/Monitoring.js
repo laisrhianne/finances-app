@@ -13,7 +13,7 @@ export default function Monitoring({ transactions }) {
   let mesAtual = transactions.filter(
     (transaction) => transaction.month === data.getMonth()
   );
-  console.log('mês atual:' + mesAtual)
+  console.log('mês atual:' + mesAtual);
   let credito = creditoMes(mesAtual);
   let debito = debitoMes(mesAtual);
 
@@ -21,12 +21,16 @@ export default function Monitoring({ transactions }) {
     <Container style={styles.container}>
       <h3>Monitoramento</h3>
       <br />
-      <p>Saldo atual: {saldo}</p>
+      <fieldset style={styles.saldo}>
+        <h4>Saldo atual</h4>
+        <h5>R$ {saldo}</h5>
+      </fieldset>
 
-      <h4>Mês atual:</h4>
-      <br />
-      <p>Crédito no mês: {credito}</p>
-      <p>Gastos no mês: {debito}</p>
+      <fieldset style={styles.mes}>
+        <h4>Mês atual</h4>
+        <h5>Crédito no mês: R$ {credito}</h5>
+        <h5>Débito no mês: R$ {debito}</h5>
+      </fieldset>
     </Container>
   );
 }
@@ -55,4 +59,17 @@ const styles = {
     marginTop: 30,
     marginBottom: 30,
   },
+  saldo: {
+    borderStyle: 'dotted',
+    borderRadius: 10,
+    borderColor: 'black',
+    borderWidth: 3,
+    marginBottom: 30,
+  },
+  mes: {
+    borderStyle: 'dotted',
+    borderRadius: 10,
+    borderColor: 'black',
+    borderWidth: 3
+  }
 };
